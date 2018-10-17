@@ -1,7 +1,9 @@
 #include <iostream>
 
+void PrintTitle(int);
+
 int main() {
-	std::cout << "Hello World!" << std::endl;
+	PrintTitle(400);
 	system("pause");
 	return 0;
 }
