@@ -115,8 +115,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BoardGame.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RenderingBoard.cpp" />
+    <ClCompile Include="Player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BoardGame.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
