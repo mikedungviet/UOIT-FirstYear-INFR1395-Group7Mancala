@@ -118,6 +118,7 @@
     <ClCompile Include="BoardGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RenderingBoard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoardGame.h" />
