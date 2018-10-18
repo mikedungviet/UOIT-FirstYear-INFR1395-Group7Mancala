@@ -21,22 +21,23 @@ public:
 		the board array at initial stage
 	*/
 	BoardGame() {
-		for (int i = 0; i < 14; i++) {
-			//Set the mancala goals
-			if (i == 6 || i == 13) {
-				testing[i].boardGameArray = 0;
-				testing[i].userChoice = "";
-			}
-			//Set the pits to their default
-			else {
-				testing[i].boardGameArray = 4;
-				if (i <= 6)
-					testing[i].userChoice = "a" + std::to_string(i++);
-				else if (i >= 7) {
-					testing[i].userChoice = "b" + std::to_string(i++);
-				}
-			}
-		}
+		
+		testing[0].boardGameArray = 4;
+		testing[1].boardGameArray = 4;
+		testing[2].boardGameArray = 4;
+		testing[3].boardGameArray = 4;
+		testing[4].boardGameArray = 4;
+		testing[5].boardGameArray = 4;
+		testing[6].boardGameArray = 0;
+		testing[7].boardGameArray = 4;
+		testing[8].boardGameArray = 4;
+		testing[9].boardGameArray = 4;
+		testing[10].boardGameArray = 4;
+		testing[11].boardGameArray = 4;
+		testing[12].boardGameArray = 4;
+		testing[13].boardGameArray = 0;
+
+		
 	}
 	/*
 		Deconstructor
@@ -51,6 +52,11 @@ public:
 
 	std::string GetUserChoice(int index) {
 		return testing[index].userChoice;
+	}
+
+	void PrintArray() {
+		for (int i = 0; i <= 13; i++)
+			std::cout << i << ": " << testing[i].boardGameArray << std::endl;
 	}
 
 	//Class member function
