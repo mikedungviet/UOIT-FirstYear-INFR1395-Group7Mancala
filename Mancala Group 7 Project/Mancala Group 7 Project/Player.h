@@ -6,6 +6,7 @@ private:
 	std::string *name = new std::string;
 	int *playerMancalaLocation = new int;
 	std::string *validUserInput = new std::string[6];
+	bool *playerTurn = new bool;
 public:
 	//Default constructor
 	Player(){}
@@ -23,5 +24,29 @@ public:
 			*playerMancalaLocation = 13;
 		}
 	}
+
+	/*
+		This function gets the name of the player
+		@return Returns the name (Dereference the pointer)
+	*/
+	std::string GetName() {
+		return *name;
+	}
+
+	/*
+		This function gets the string from Valid User Input
+		at an index
+		@param index The location within the array
+		@return Returns the string
+	*/
+	
+	/*
+	*/
+	std::string* GetValidUserInput() {
+		return validUserInput;
+	}
+
+	//Member function
+	bool CheckValidMoves(std::string *, std::string,int = 0, int = 5);
 };
 
