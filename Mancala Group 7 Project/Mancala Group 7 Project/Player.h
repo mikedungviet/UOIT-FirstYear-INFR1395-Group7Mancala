@@ -9,10 +9,10 @@ private:
 	bool *playerTurn = new bool;
 public:
 	//Default constructor
-	Player(){}
+	Player() {}
 
 	//Player constructor
-	Player(std::string *_name, int _playerNumber) :name {_name} {
+	Player(std::string *_name, int _playerNumber) :name{ _name } {
 		if (_playerNumber == 1) {
 			std::string tempArr[6] = { "a1","a2","a3","a4","a5","a6" };
 			std::copy(tempArr, tempArr + 6, validUserInput);
@@ -34,19 +34,14 @@ public:
 	}
 
 	/*
-		This function gets the string from Valid User Input
-		at an index
-		@param index The location within the array
-		@return Returns the string
+		This function returns the string array
+		@return
 	*/
-	
-	/*
-	*/
-	std::string* GetValidUserInput() {
+	std::string *GetValidUserInput() {
 		return validUserInput;
 	}
 
 	//Member function
-	bool CheckValidMoves(std::string *, std::string,int = 0, int = 5);
+	bool CheckValidMoves(std::string, int = 0, int = 5);
 };
 

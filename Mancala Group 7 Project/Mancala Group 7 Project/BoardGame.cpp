@@ -1,6 +1,4 @@
 #include "BoardGame.h"
-
-
 /*
 	This function draws the board at the location set in
 	the parameter

@@ -9,16 +9,18 @@
 	@return Return true if found
 			Return false if not found
 */
-bool Player::CheckValidMoves(std::string *arr, std::string value, int firstIndex, int lastIndex) {
+bool Player::CheckValidMoves(std::string value, int firstIndex, int lastIndex) {
+	//
+	std::string *arr = this->validUserInput;
 	if (firstIndex <= lastIndex) {
 		int midIndex = (firstIndex + lastIndex) / 2;
 
-		if (value.compare(arr[midIndex])==0)
+		if (value.compare(arr[midIndex]) == 0)
 			return true;
 		else if (arr[midIndex] > value)
-			return CheckValidMoves(arr, value,0, midIndex - 1);
+			return CheckValidMoves(value, 0, midIndex - 1);
 		else if (arr[midIndex] < value)
-			return CheckValidMoves(arr, value, midIndex + 1);
+			return CheckValidMoves(value, midIndex + 1);
 	}
 	return false;
 }
