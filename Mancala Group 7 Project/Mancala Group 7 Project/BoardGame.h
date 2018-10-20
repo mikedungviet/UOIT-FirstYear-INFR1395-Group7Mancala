@@ -65,6 +65,7 @@ public:
 			data[i].boardGameValue = 4;
 		}
 	}
+
 	/*
 		Gets the value of Board Game Value in node at an index
 		@param index This is the location within the array
