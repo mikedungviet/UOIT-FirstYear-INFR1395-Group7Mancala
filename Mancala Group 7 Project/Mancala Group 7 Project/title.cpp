@@ -6,7 +6,7 @@ void SetWindow() {
 	RECT r;
 	GetWindowRect(console, &r); //stores the console's current dimensions
 
-	MoveWindow(console, r.left, r.top, 1250, 750, TRUE); // 800 width, 100 height
+	MoveWindow(console, r.left, r.top, 1050, 750, TRUE); // 1250 width, 100 height
 }
 
 void PrintTitle(int delay) {
@@ -29,4 +29,5 @@ void PrintTitle(int delay) {
 	Sleep(delay);
 	std::cout << "| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |" << std::endl;
 	std::cout << " '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' " << std::endl;
+	std::cout << "___________________________________________________________________________________________________________________________________________" << std::endl;
 }

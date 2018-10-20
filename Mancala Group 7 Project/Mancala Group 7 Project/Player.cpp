@@ -1,4 +1,6 @@
 #include "Player.h"
+#include <stdlib.h>
+#include <Windows.h>
 
 /*
 	This function performs a binary search to find a string
@@ -15,13 +17,60 @@ bool Player::CheckValidMoves(std::string value, int firstIndex, int lastIndex) {
 	if (firstIndex <= lastIndex) {
 		int midIndex = (firstIndex + lastIndex) / 2;
 
+		//If the value is equal to mid
 		if (value.compare(arr[midIndex]) == 0)
 			return true;
+		//If the value is lower than mid
 		else if (arr[midIndex] > value)
 			return CheckValidMoves(value, 0, midIndex - 1);
+		//If the value is higher than mid
 		else if (arr[midIndex] < value)
 			return CheckValidMoves(value, midIndex + 1);
 	}
 	return false;
 }
+
+/*
+	This function performs a set of steps to change the score board
+	@param index The index where the player chose
+	@param &opponent An instance of a Player object
+	@param *board The address of the board
+
+*/
+void Player::PlayerMoves(int index, Player *opponent, BoardGame *board) {
+	//Change turn
+	*playerTurn = false;
+	opponent->SetPlayerTurn(true);
+
+	system("cls");//Clear screen
+
+	//Get the counter and set the value at index to 0
+	int counter = board->GetBoardGameArray(index);
+	board->SetValueToZero(index);
+
+	//Main loop
+	for (counter; counter > 0; counter--) {
+		index++;
+		if (index > 13)
+			index = 0;
+
+		//Skip the opponent's mancala if index is equal to theirs
+		if (index == opponent->GetPlayerMancalaIndex()) {
+			counter++;
+			continue;
+		}
+
+		board->IncreaseValueby1(index);
+
+		//Special Cases go under
+
+
+		//Special Cases go above
+		system("cls");
+		board->RenderBoard(8,2,"");
+		Sleep(500);
+	}
+}
+
+
 

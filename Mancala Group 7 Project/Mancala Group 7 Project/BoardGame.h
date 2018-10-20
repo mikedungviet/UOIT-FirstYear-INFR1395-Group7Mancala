@@ -14,63 +14,64 @@ private:
 		int boardGameValue;
 		std::string userPosibleChoices;
 	};
-	node *testing = new node[14];
+	node *data = new node[14];
 
 public:
 	/*
 		This is a default constructor. It will initalize
 		the board array at initial stage
 
-		Note: For loop didn't work for all elements
-			  need to figure out a correct for loop
-		
 	*/
 	BoardGame() {
-		testing[0].boardGameValue = 4;
-		testing[1].boardGameValue = 4;
-		testing[2].boardGameValue = 4;
-		testing[3].boardGameValue = 4;
-		testing[4].boardGameValue = 4;
-		testing[5].boardGameValue = 4;
-		testing[6].boardGameValue = 0; //Mancala Score
-		testing[7].boardGameValue = 4;
-		testing[8].boardGameValue = 4;
-		testing[9].boardGameValue = 4;
-		testing[10].boardGameValue = 4;
-		testing[11].boardGameValue = 4;
-		testing[12].boardGameValue = 4;
-		testing[13].boardGameValue = 0; //Mancala Score
-
-		testing[0].userPosibleChoices = "a1";
-		testing[1].userPosibleChoices = "a2";
-		testing[2].userPosibleChoices = "a3";
-		testing[3].userPosibleChoices = "a4";
-		testing[4].userPosibleChoices = "a5";
-		testing[5].userPosibleChoices = "a6";
-		testing[6].userPosibleChoices = "no"; //Mancala Score
-		testing[7].userPosibleChoices = "a1";
-		testing[8].userPosibleChoices = "a2";
-		testing[9].userPosibleChoices = "a3";
-		testing[10].userPosibleChoices = "a4";
-		testing[11].userPosibleChoices = "a5";
-		testing[12].userPosibleChoices = "a6";
-		testing[13].userPosibleChoices = "no";
+		for (int i = 0; i <= 13; i++) {
+			if (i == 6 || i == 3) {
+				data[i].boardGameValue = 0;
+				continue;
+			}
+			data[i].boardGameValue = 4;
+		}
+		
+		data[0].userPosibleChoices = "a1";
+		data[1].userPosibleChoices = "a2";
+		data[2].userPosibleChoices = "a3";
+		data[3].userPosibleChoices = "a4";
+		data[4].userPosibleChoices = "a5";
+		data[5].userPosibleChoices = "a6";
+		data[6].userPosibleChoices = "no"; //Mancala Score
+		data[7].userPosibleChoices = "b6";
+		data[8].userPosibleChoices = "b5";
+		data[9].userPosibleChoices = "b4";
+		data[10].userPosibleChoices = "b3";
+		data[11].userPosibleChoices = "b2";
+		data[12].userPosibleChoices = "b1";
+		data[13].userPosibleChoices = "no";//Mancala Score
 
 	}
 	/*
 		Deconstructor
 	*/
 	~BoardGame() {
-
+		
 	}
-
+	/*
+		This function resets the boardGameValue to original
+	*/
+	void ResetBoardValue() {
+		for (int i = 0; i <= 13; i++) {
+			if (i == 6 || i == 3) {
+				data[i].boardGameValue = 0;
+				continue;
+			}
+			data[i].boardGameValue = 4;
+		}
+	}
 	/*
 		Gets the value of Board Game Value in node at an index
 		@param index This is the location within the array
 		@return Returns the value as an int
 	*/
 	int GetBoardGameArray(int index) {
-		return testing[index].boardGameValue;
+		return data[index].boardGameValue;
 	}
 
 	/*
@@ -80,7 +81,7 @@ public:
 		@return Returns the string 
 	*/
 	std::string GetUserChoice(int index) {
-		return testing[index].userPosibleChoices;
+		return data[index].userPosibleChoices;
 	}
 
 	/*
@@ -89,7 +90,7 @@ public:
 		@param index The location in the array
 	*/
 	void SetValueToZero(int index) {
-		testing[index].boardGameValue = 0;
+		data[index].boardGameValue = 0;
 	}
 
 	/*
@@ -98,20 +99,24 @@ public:
 		@param index The location in the array
 		@param value The value to set to
 	*/
-	void SetValueToAnother(int index, int value) {
-		testing[index].boardGameValue = value;
+	void IncreaseValueby1(int index) {
+		data[index].boardGameValue ++;
 	}
 
 
 	/*
+		Print the array (For Testing purpose)
 	*/
 	void PrintArray() {
 		for (int i = 0; i < 14; i++) {
-			std::cout << "I: " << i << " value: " << testing[i].boardGameValue << std::endl;
+			std::cout << "I: " << i << " value: " << data[i].boardGameValue << std::endl;
 		}
 	}
 
 	//Class member function
-	void RenderBoard(int xLocation, int yLocation);
+	void RenderBoard(int xLocation, int yLocation, std::string);
+	bool CheckIfGameEnds();
+	void AddUpPoints();
+	int BinarySearchForIndex(std::string, int, int);
 };
 
