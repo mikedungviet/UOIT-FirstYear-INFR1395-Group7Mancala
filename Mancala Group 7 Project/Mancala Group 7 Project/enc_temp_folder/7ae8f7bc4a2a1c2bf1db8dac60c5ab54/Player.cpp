@@ -63,15 +63,17 @@ void Player::PlayerMoves(int index, Player *opponent, BoardGame *board) {
 		board->IncreaseValueby1(index);
 
 		//Special Cases go under
-		/*if (CheckValidMoves(board->GetUserChoice(index))) {
+		if (CheckValidMoves(board->GetUserChoice(index))) {
 			
-			if (board->GetBoardGameArray(index) == 1){
+			if (board->GetBoardGameArray(index) == 1) {
+				for (int i = 0; i < board->GetBoardGameArray(index + 6);i++) {
+					
+				}
 
-				board->SetValue(*playerMancalaLocation, );
-				board->SetValueToZero(index);
+				board->SetValueToZero(index + 6);
 				board->SetValueToZero(index);	
 			}
-		}*/
+		}
 			
 
 		//Special Cases go above

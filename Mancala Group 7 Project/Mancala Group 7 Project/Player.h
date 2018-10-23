@@ -53,7 +53,7 @@ public:
 	}
 
 	/*
-		This function return the index of the player
+		This function returns the index of the player
 		mancala
 	*/
 	int GetPlayerMancalaIndex() {

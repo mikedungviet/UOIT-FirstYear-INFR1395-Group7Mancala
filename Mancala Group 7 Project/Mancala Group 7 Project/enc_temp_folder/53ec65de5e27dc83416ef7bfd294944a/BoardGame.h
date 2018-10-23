@@ -103,12 +103,7 @@ public:
 	void IncreaseValueby1(int index) {
 		data[index].boardGameValue ++;
 	}
-	
-	/*
-	*/
-	void SetValue(int index, int value) {
-		data[index].boardGameValue = value;
-	}
+
 
 	/*
 		Print the array (For Testing purpose)
