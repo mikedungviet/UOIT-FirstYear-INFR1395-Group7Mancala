@@ -109,9 +109,13 @@ std::string LocalMutiPlayer(Player *player1, Player *player2, BoardGame *board) 
 			system("CLS");
 			PrintTitle(0);
 			board->RenderBoard(8, 2, (player1->GetName() + "'s Turn"));
+			std::cout << "Please enter a pit position: ";
 			while (std::cin >> userInput) {
+				userInput[0] = tolower(userInput[0]);
 				if (player1->CheckValidMoves(userInput))
 					break;
+				else
+					std::cout << "Enter a valid input (A1-A6): ";
 			}
 
 			int userInputToIndex = board->BinarySearchForIndex(userInput, 0, 5);
@@ -122,9 +126,13 @@ std::string LocalMutiPlayer(Player *player1, Player *player2, BoardGame *board) 
 			system("CLS");
 			PrintTitle(0);
 			board->RenderBoard(8, 2, (player2->GetName() + "'s Turn"));
+			std::cout << "Please enter a pit position: ";
 			while (std::cin >> userInput) {
+				userInput[0] = tolower(userInput[0]);
 				if (player2->CheckValidMoves(userInput))
 					break;
+				else
+					std::cout << "Enter a valid input (B1-B6): ";
 			}
 			int userInputToIndex = board->BinarySearchForIndex(userInput, 7, 12);
 			player2->PlayerMoves(userInputToIndex, player1, board);

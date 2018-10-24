@@ -24,7 +24,7 @@ public:
 	*/
 	BoardGame() {
 		for (int i = 0; i <= 13; i++) {
-			if (i == 6 || i == 3) {
+			if (i == 6 || i == 13) {
 				data[i].boardGameValue = 0;
 				continue;
 			}
