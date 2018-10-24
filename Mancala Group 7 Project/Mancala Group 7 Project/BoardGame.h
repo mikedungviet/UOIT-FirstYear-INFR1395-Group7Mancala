@@ -118,6 +118,6 @@ public:
 	void RenderBoard(int xLocation, int yLocation, std::string);
 	bool CheckIfGameEnds();
 	void AddUpPoints();
-	int BinarySearchForIndex(std::string, int, int);
+	int BinarySearchForIndex(std::string);
 };
 

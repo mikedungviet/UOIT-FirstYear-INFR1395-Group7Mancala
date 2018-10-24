@@ -64,7 +64,7 @@ void PlayerMoves(Player *player, Player *opponent, BoardGame *board){
 		if (player->CheckValidMoves(userChoice))
 			break;
 	}
-	int userInputToIndex = board->BinarySearchForIndex(userChoice, 0, 5);
+	int userInputToIndex = board->BinarySearchForIndex(userChoice);
 	player->PlayerMoves(userInputToIndex, opponent, board);
 }
 	
@@ -79,7 +79,7 @@ std::string LocalMutiPlayer(Player *player1, Player *player2, BoardGame *board) 
 	//Local Variable (Stack memory)
 	std::string userInput, specialMessage;
 
-	system("CLS");
+	//system("CLS");
 
 	//Game loop
 	while (true) {

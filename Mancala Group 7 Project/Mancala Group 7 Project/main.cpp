@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -25,7 +24,7 @@ int main()
 
 	//Set window screen and title animation
 	SetWindow();
-	PrintTitle(500);
+	PrintTitle(0);
 	while (true) {
 		//Menu loop
 		choice = FirstMenu();
@@ -55,11 +54,13 @@ int main()
 
 			continue;
 		}
+		//Print instruction
 		else if (choice == 2) {
 			system("cls");
 			instructions();
 			system("Pause");
 			system("cls");
+			PrintTitle(0);
 			continue;
 		}
 		else if (choice == 3) {
