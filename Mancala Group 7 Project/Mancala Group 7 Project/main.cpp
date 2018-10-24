@@ -13,6 +13,7 @@ std::string LocalMutiPlayer(Player*, Player*, BoardGame*);
 void GetandSetName(Player *, std::string);
 int FirstMenu();
 std::string LocalMutiPlayer(Player *, Player *, BoardGame *);
+void instructions();
 
 int main()
 {
@@ -55,7 +56,10 @@ int main()
 			continue;
 		}
 		else if (choice == 2) {
-
+			system("cls");
+			instructions();
+			system("Pause");
+			system("cls");
 			continue;
 		}
 		else if (choice == 3) {
