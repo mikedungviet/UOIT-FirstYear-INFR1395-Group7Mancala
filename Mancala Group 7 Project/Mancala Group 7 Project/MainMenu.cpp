@@ -42,9 +42,7 @@ int FirstMenu() {
 
 		while (std::cin >> userInput) {
 			int num = ConvertStringToInteger(userInput);
-			if (num == -1)
-				continue;
-			else
+			if (num >= 1 || num <= 3)
 				return num;
 		}
 	}
