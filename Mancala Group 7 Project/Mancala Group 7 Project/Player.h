@@ -19,7 +19,7 @@ public:
 			std::string tempArr[6] = { "a1","a2","a3","a4","a5","a6" };
 			std::copy(tempArr, tempArr + 6, validUserInput);
 			*playerMancalaLocation = 6;
-			
+			*playerTurn = true;
 		}
 		else if (_playerNumber == 2) {
 			std::string tempArr[6] = { "b1","b2","b3","b4","b5","b6" };
