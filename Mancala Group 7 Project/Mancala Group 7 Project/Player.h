@@ -45,6 +45,12 @@ public:
 	}
 
 	/*
+	*/
+	std::string GetValidUserInput(int location) {
+		return validUserInput[location];
+	}
+
+	/*
 		This function returns the player turn
 		@return Return the Player Turn
 	*/
@@ -53,7 +59,7 @@ public:
 	}
 
 	/*
-		This function return the index of the player
+		This function returns the index of the player
 		mancala
 	*/
 	int GetPlayerMancalaIndex() {
@@ -76,7 +82,8 @@ public:
 	
 
 	//Member function
-	bool CheckValidMoves(std::string, int = 0, int = 5);
+	int CheckValidMoves(std::string, int = 0, int = 5);
 	void PlayerMoves(int, Player *, BoardGame *);
+	void PerformSteal(int index, Player *opponent, BoardGame *board);
 };
 
