@@ -11,7 +11,7 @@
 	@return Return true if found
 			Return false if not found
 */
-bool Player::CheckValidMoves(std::string value, int firstIndex, int lastIndex) {
+int Player::CheckValidMoves(std::string value, int firstIndex, int lastIndex) {
 	//
 	std::string *arr = this->validUserInput;
 	if (firstIndex <= lastIndex) {
@@ -27,8 +27,34 @@ bool Player::CheckValidMoves(std::string value, int firstIndex, int lastIndex) {
 		else if (arr[midIndex] < value)
 			return CheckValidMoves(value, midIndex + 1);
 	}
-	return false;
+	return -1;
 }
+/*
+	This function performs a steal
+	@param index The index where the steal will perform
+	@param *opponent An instance of the opponent player object
+	@param *board An instance of a board object
+*/
+void Player::PerformSteal(int index, Player *opponent, BoardGame *board) {
+	//pseudo code
+	//If the conditions are not met, return;
+	int subIndex = CheckValidMoves(board->GetUserChoice(index));
+	if (subIndex == -1 || board->GetBoardGameArray(index)!= 1)
+		return;
+
+	//else continue
+
+	//Gets the string of ValidUserChoice of the opponent at the subIndex
+
+	//Search the returned string (from above) using board binary search to get the
+	//new index
+		//If the first char is a then search from 0 to 5
+		//If the first char is b then search from 7 to 13
+
+	//Set the value at new index to 0 and Adding the value to player's Mancala
+	//Set the value at index to 0 and add the value to player's Mancala
+}
+
 
 /*
 	This function performs a set of steps to change the score board
@@ -63,15 +89,14 @@ void Player::PlayerMoves(int index, Player *opponent, BoardGame *board) {
 		board->IncreaseValueby1(index);
 
 		//Special Cases go under
-		/*if (CheckValidMoves(board->GetUserChoice(index))) {
-			
-			if (board->GetBoardGameArray(index) == 1){
-
-				board->SetValue(*playerMancalaLocation, );
-				board->SetValueToZero(index);
-				board->SetValueToZero(index);	
+		if (counter == 1) {
+			PerformSteal(index, opponent, board);
+			//Condition for getting a free turn
+			if (index == *playerMancalaLocation) {
+				*playerTurn = true;
+				opponent->SetPlayerTurn(false);
 			}
-		}*/
+		}
 			
 
 		//Special Cases go above
