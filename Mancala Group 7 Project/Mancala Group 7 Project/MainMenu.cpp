@@ -62,8 +62,11 @@ void PlayerMoves(Player *player, Player *opponent, BoardGame *board, std::string
 	board->RenderBoard(8, 2, (player->GetName() + "'s Turn"));
 	std::cout << "\nValid Choice "+ message +": ";
 	while (std::cin >> userChoice) {
+		userChoice[0] = tolower(userChoice[0]);
 		if (player->CheckValidMoves(userChoice)!=-1)
 			break;
+		std::cout << "Invalid Choice. Please try again: ";
+		std::cout << "\nValid Choice " + message + ": ";
 	}
 	int userInputToIndex = board->BinarySearchForIndex(userChoice);
 	player->PlayerMoves(userInputToIndex, opponent, board);
