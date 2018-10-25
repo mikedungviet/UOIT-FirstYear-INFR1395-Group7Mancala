@@ -19,7 +19,7 @@ public:
 			std::string tempArr[6] = { "a1","a2","a3","a4","a5","a6" };
 			std::copy(tempArr, tempArr + 6, validUserInput);
 			*playerMancalaLocation = 6;
-			
+			*playerTurn = true;
 		}
 		else if (_playerNumber == 2) {
 			std::string tempArr[6] = { "b1","b2","b3","b4","b5","b6" };
@@ -45,6 +45,12 @@ public:
 	}
 
 	/*
+	*/
+	std::string GetValidUserInput(int location) {
+		return validUserInput[location];
+	}
+
+	/*
 		This function returns the player turn
 		@return Return the Player Turn
 	*/
@@ -53,7 +59,7 @@ public:
 	}
 
 	/*
-		This function return the index of the player
+		This function returns the index of the player
 		mancala
 	*/
 	int GetPlayerMancalaIndex() {
@@ -76,7 +82,8 @@ public:
 	
 
 	//Member function
-	bool CheckValidMoves(std::string, int = 0, int = 5);
+	int CheckValidMoves(std::string, int = 0, int = 5);
 	void PlayerMoves(int, Player *, BoardGame *);
+	void PerformSteal(int index, Player *opponent, BoardGame *board);
 };
 

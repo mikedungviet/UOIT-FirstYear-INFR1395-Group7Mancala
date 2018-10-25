@@ -15,7 +15,7 @@ void BoardGame::RenderBoard(int xLocation, int yLocation, std::string specialMes
 	size_t stringLength{ specialMessage.length() };
 	if (stringLength % 2 == 0)
 		specialMessage += " ";
-	size_t remainder = width/2 -stringLength/2+5;
+	size_t remainder = width / 2 - stringLength / 2 + 5;
 
 	//Set to Y axis
 	for (int i = 0; i < yLocation; i++) {
@@ -24,6 +24,7 @@ void BoardGame::RenderBoard(int xLocation, int yLocation, std::string specialMes
 
 	//Cout after indexing to X axis
 	std::cout << std::setw(107 + xLocation) << " _______________________________________________________________________________________________________ \n";
+	std::cout << std::setw(107 + xLocation) << "|            |            |            |            |            |            |            |            |\n";
 	std::cout << std::setw(107 + xLocation) << "|            |    (B1)    |    (B2)    |    (B3)    |    (B4)    |    (B5)    |    (B6)    |            |\n";
 	std::cout << std::setw(107 + xLocation) << "|            |            |            |            |            |            |            |            |\n";
 
@@ -39,7 +40,7 @@ void BoardGame::RenderBoard(int xLocation, int yLocation, std::string specialMes
 	std::cout << std::setfill(' ') << std::setw(107 + xLocation) << "|            |                                                                             |            |\n";
 
 
-	std::cout << std::setfill(' ') << std::setw(7 + xLocation) << "|     " << std::setw(2) << std::setfill('0') << data[13].boardGameValue << "     |" << std::setw((width/2)+stringLength/2)<<std::setfill(' ')<<specialMessage <<std::setw(remainder)
+	std::cout << std::setfill(' ') << std::setw(7 + xLocation) << "|     " << std::setw(2) << std::setfill('0') << data[13].boardGameValue << "     |" << std::setw((width / 2) + stringLength / 2) << std::setfill(' ') << specialMessage << std::setw(remainder)
 		<< "|     " << std::setw(2) << std::setfill('0') << data[6].boardGameValue << "     |\n";
 
 
@@ -101,25 +102,45 @@ void BoardGame::AddUpPoints() {
 	@param firstIndex The first index of the array
 	@param lastIndex The last index of the array
 */
-int BoardGame::BinarySearchForIndex(std::string value, int firstIndex, int lastIndex) {
+int BoardGame::BinarySearchForIndex(std::string value) {
 	node *arr = this->data;
+	int firstIndex, lastIndex, midIndex;
 
-
-	//Start binary search
-	if (firstIndex <= lastIndex) {
-		int midIndex = (firstIndex + lastIndex) / 2;
-
-		//If the value is equal to mid
-		if (arr[midIndex].userPosibleChoices == value)
-			return midIndex;
-		//If the value is lower than mid
-		else if ((arr[firstIndex].userPosibleChoices < arr[lastIndex].userPosibleChoices)
-			? (arr[midIndex].userPosibleChoices > value)
-			:(arr[midIndex].userPosibleChoices < value))
-			return BinarySearchForIndex(value, firstIndex, midIndex - 1);
-		//If the value is higher than mid
-		else
-			return BinarySearchForIndex(value, midIndex + 1, lastIndex);
+	if (value.at(0) == 'a') {
+		firstIndex = 0;
+		lastIndex = 5;
 	}
-	return -1; //If the string doesn't in the array
+	else if (value.at(0) == 'b') {
+		firstIndex = 7;
+		lastIndex = 12;
+	}
+
+	//Start binary search for ascending order
+	if (arr[firstIndex].userPosibleChoices < arr[lastIndex].userPosibleChoices) {
+		while (firstIndex <= lastIndex) {
+			midIndex = (firstIndex + lastIndex) / 2;
+
+			if (arr[midIndex].userPosibleChoices == value)
+				return midIndex;
+			else if (arr[midIndex].userPosibleChoices < value)
+				firstIndex = midIndex + 1;
+			else
+				lastIndex = midIndex - 1;
+		}
+		return -1; //If the string doesn't in the array
+	}
+	//Start binary search for decending order
+	else if (arr[firstIndex].userPosibleChoices > arr[lastIndex].userPosibleChoices) {
+		while (firstIndex <= lastIndex) {
+			midIndex = (firstIndex + lastIndex) / 2;
+			if (arr[midIndex].userPosibleChoices == value)
+				return midIndex;
+			else if (arr[midIndex].userPosibleChoices < value)
+				lastIndex = midIndex - 1;
+			else
+				firstIndex = midIndex + 1;
+		}
+		return -1; //If the string doesn't in the array
+	}
+	
 }

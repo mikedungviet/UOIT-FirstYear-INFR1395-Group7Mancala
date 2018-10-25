@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <Windows.h>
 
@@ -6,7 +7,7 @@ void SetWindow() {
 	RECT r;
 	GetWindowRect(console, &r); //stores the console's current dimensions
 
-	MoveWindow(console, r.left, r.top, 1050, 750, TRUE); // 1250 width, 100 height
+	MoveWindow(console, r.left, r.top, 1250, 750, TRUE); // 1250 width, 100 height
 }
 
 void PrintTitle(int delay) {
