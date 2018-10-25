@@ -50,17 +50,15 @@ void Player::PerformSteal(int index, Player *opponent, BoardGame *board) {
 	//new index
 	if (location[0]=="a") {
 		//If the first char is a then search from 0 to 5
-		newIndex=board->BinarySearchForIndex(*location, 0, 5);
+		newIndex=board->BinarySearchForIndex(*location);
 	}
 	else if (location[0]=="b"){
 		//If the first char is b then search from 7 to 12
-		newIndex=board->BinarySearchForIndex(*location, 7, 12);
+		newIndex=board->BinarySearchForIndex(*location);
 	}
 	board->SetValue(*playerMancalaLocation, newIndex + 1);
 	board->SetValue(newIndex, 0);
 	board->SetValue(subIndex, 0);
-	//Set the value at new index to 0 and Adding the value to player's Mancala
-	//Set the value at index to 0 and add the value to player's Mancala
 }
 
 

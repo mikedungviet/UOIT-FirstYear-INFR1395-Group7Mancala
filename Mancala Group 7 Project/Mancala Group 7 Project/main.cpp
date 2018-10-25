@@ -16,8 +16,6 @@ void instructions();
 
 int main()
 {
-	
-
 	//Local Variable (Stack Storage)
 	int choice;
 	std::string name;
