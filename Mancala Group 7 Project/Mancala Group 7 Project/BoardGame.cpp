@@ -24,6 +24,7 @@ void BoardGame::RenderBoard(int xLocation, int yLocation, std::string specialMes
 
 	//Cout after indexing to X axis
 	std::cout << std::setw(107 + xLocation) << " _______________________________________________________________________________________________________ \n";
+	std::cout << std::setw(107 + xLocation) << "|            |            |            |            |            |            |            |            |\n";
 	std::cout << std::setw(107 + xLocation) << "|            |    (B1)    |    (B2)    |    (B3)    |    (B4)    |    (B5)    |    (B6)    |            |\n";
 	std::cout << std::setw(107 + xLocation) << "|            |            |            |            |            |            |            |            |\n";
 

@@ -26,10 +26,13 @@ public:
 		for (int i = 0; i <= 13; i++) {
 			if (i == 6 || i == 13) {
 				data[i].boardGameValue = 0;
+				data[i].userPosibleChoices = "no";
 				continue;
 			}
 			data[i].boardGameValue = 4;
 		}
+
+		//data[12].boardGameValue = 11;
 		
 		data[0].userPosibleChoices = "a1";
 		data[1].userPosibleChoices = "a2";
@@ -37,14 +40,12 @@ public:
 		data[3].userPosibleChoices = "a4";
 		data[4].userPosibleChoices = "a5";
 		data[5].userPosibleChoices = "a6";
-		data[6].userPosibleChoices = "no"; //Mancala Score
 		data[7].userPosibleChoices = "b6";
 		data[8].userPosibleChoices = "b5";
 		data[9].userPosibleChoices = "b4";
 		data[10].userPosibleChoices = "b3";
 		data[11].userPosibleChoices = "b2";
 		data[12].userPosibleChoices = "b1";
-		data[13].userPosibleChoices = "no";//Mancala Score
 
 	}
 	/*

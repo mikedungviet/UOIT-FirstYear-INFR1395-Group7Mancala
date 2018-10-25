@@ -22,7 +22,7 @@ int main()
 
 	//Set window screen and title animation
 	SetWindow();
-	PrintTitle(0);
+	PrintTitle(375);
 	while (true) {
 		//Menu loop
 		choice = FirstMenu();
@@ -44,6 +44,10 @@ int main()
 
 			//Start game
 			winner = LocalMutiPlayer(playerOne, playerTwo, playingBoard);
+			
+			system("cls");
+			playingBoard->RenderBoard(8, 2, winner + " wins");
+
 
 			//Delete Memory
 			delete playingBoard;

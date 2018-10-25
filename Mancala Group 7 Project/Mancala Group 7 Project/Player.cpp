@@ -37,28 +37,22 @@ int Player::CheckValidMoves(std::string value, int firstIndex, int lastIndex) {
 	@param *board An instance of a board object
 */
 void Player::PerformSteal(int index, Player *opponent, BoardGame *board) {
-	//pseudo code
-	//If the conditions are not met, return;
-	int newIndex(0);
+	int newIndex;
 	int subIndex = CheckValidMoves(board->GetUserChoice(index));
-	if (subIndex == -1 || board->GetBoardGameArray(index)!= 1)
+	
+	//Exit if conditions are not met
+	if (subIndex == -1 || board->GetBoardGameArray(index) != 1)
 		return;
-	//ets the string of ValidUserChoice of the opponent at the subIndex
-	std::string *location = new std::string;
-	*location = opponent->GetValidUserInput(subIndex);
-	//Search the returned string (from above) using board binary search to get the
-	//new index
-	if (location[0]=="a") {
-		//If the first char is a then search from 0 to 5
-		newIndex=board->BinarySearchForIndex(*location);
-	}
-	else if (location[0]=="b"){
-		//If the first char is b then search from 7 to 12
-		newIndex=board->BinarySearchForIndex(*location);
-	}
-	board->SetValue(*playerMancalaLocation, newIndex + 1);
-	board->SetValue(newIndex, 0);
-	board->SetValue(subIndex, 0);
+	
+	//Continue
+	std::string location;
+	location = opponent->GetValidUserInput(index);
+	
+
+	newIndex = board->BinarySearchForIndex(location);
+	board->SetValue(*playerMancalaLocation, board->GetBoardGameArray(*playerMancalaLocation)+board->GetBoardGameArray(newIndex)+1);
+	board->SetValueToZero(newIndex); 
+	board->SetValueToZero(index); //working
 }
 
 
@@ -97,17 +91,17 @@ void Player::PlayerMoves(int index, Player *opponent, BoardGame *board) {
 		//Special Cases go under
 		if (counter == 1) {
 			PerformSteal(index, opponent, board);
+			//Condition for getting a free turn
+			if (index == *playerMancalaLocation) {
+				*playerTurn = true;
+				opponent->SetPlayerTurn(false);
+			}
 		}
-		//Condition for getting a free turn
-		if (index == *playerMancalaLocation) {
-			*playerTurn = true;
-			opponent->SetPlayerTurn(false);
-		}
-	}
-		//Special Cases go above
+
 		system("cls");
-		board->RenderBoard(8,2,"");
+		board->RenderBoard(8, 2, "");
 		Sleep(500);
+	}
 }
 
 

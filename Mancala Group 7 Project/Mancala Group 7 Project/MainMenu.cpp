@@ -55,11 +55,12 @@ int FirstMenu() {
 	@param *opponent This is the oppoenent's object
 	@param *board This is the board
 */
-void PlayerMoves(Player *player, Player *opponent, BoardGame *board){
+void PlayerMoves(Player *player, Player *opponent, BoardGame *board, std::string message){
 	std::string userChoice;
 	system("CLS");
 	PrintTitle(0);
 	board->RenderBoard(8, 2, (player->GetName() + "'s Turn"));
+	std::cout << "\nValid Choice "+ message +": ";
 	while (std::cin >> userChoice) {
 		if (player->CheckValidMoves(userChoice)!=-1)
 			break;
@@ -85,11 +86,11 @@ std::string LocalMutiPlayer(Player *player1, Player *player2, BoardGame *board) 
 	while (true) {
 		//Player1's turn
 		if (player1->GetPlayerTurn()) {
-			PlayerMoves(player1, player2, board);
+			PlayerMoves(player1, player2, board, "(a1,a2,a3,a4,a5,a6)");
 		}
 		//Player2's turn
 		if (player2->GetPlayerTurn()) {
-			PlayerMoves(player2, player1, board);
+			PlayerMoves(player2, player1, board, "(b1,b2,b3,b4,b5,b6)");
 		}
 		//Check if the game meets the condition to end
 		if (board->CheckIfGameEnds()) {
