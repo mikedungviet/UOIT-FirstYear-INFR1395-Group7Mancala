@@ -9,7 +9,7 @@
 void SetWindow();
 void PrintTitle(int);
 std::string LocalMutiPlayer(Player*, Player*, BoardGame*);
-void GetandSetName(Player *, std::string);
+std::string *GetandSetName(std::string);
 int FirstMenu();
 std::string LocalMutiPlayer(Player *, Player *, BoardGame *);
 void instructions();
@@ -25,29 +25,29 @@ int main()
 	PrintTitle(375);
 	while (true) {
 		//Menu loop
+		system("cls");
 		choice = FirstMenu();
 		//if user input = 1 Start a game
 		if (choice == 1) {
 			//Heap Storage
 			BoardGame *playingBoard = new BoardGame;
-			Player *playerOne = new Player(1);
-			Player *playerTwo = new Player(2);
-
+			std::string *stri = new std::string;
+			
 			//Scope variable
 			std::string winner;
 			system("cls"); //Clear screen
 
 			//Get name and  create a new player object
-			GetandSetName(playerOne, "Player 1");
-			//Get name and create a new player object
-			GetandSetName(playerTwo, "Player 2");
+			stri = GetandSetName("Player 1");
+			Player *playerOne = new Player(1, stri); 
+			stri = GetandSetName("Player 2");
+			Player *playerTwo = new Player(2, stri);
 
 			//Start game
 			winner = LocalMutiPlayer(playerOne, playerTwo, playingBoard);
-			
 			system("cls");
 			playingBoard->RenderBoard(8, 2, winner + " wins");
-
+			system("pause");
 
 			//Delete Memory
 			delete playingBoard;
@@ -75,14 +75,15 @@ int main()
 	This function sets the name of the player
 	@param *player The player to set the name
 	@param playerNum The player number to display
+	@return Returns the stored address
 */
-void GetandSetName(Player *player, std::string playerNum) {
-	std::string name;
+std::string *GetandSetName(std::string playerNum) {
+	std::string *name = new std::string;
 	PrintTitle(0);
 	std::cout << "Enter " << playerNum << "'s name: ";
-	std::cin >> name;
-	player->SetPlayerName(name);
+	std::cin >> *name;
 	system("cls");
+	return name;
 }
 
 

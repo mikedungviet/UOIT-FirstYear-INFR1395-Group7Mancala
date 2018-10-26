@@ -3,6 +3,8 @@
 #include <Windows.h>
 #include <string>
 
+void PrintTitle(int);
+
 /*
 	This function performs a binary search to find a string
 	@param arr[] The array to search in
@@ -19,8 +21,8 @@ int Player::CheckValidMoves(std::string value, int firstIndex, int lastIndex) {
 		int midIndex = (firstIndex + lastIndex) / 2;
 
 		//If the value is equal to mid
-		if (value.compare(arr[midIndex]) == 0)
-			return true;
+		if (arr[midIndex] == value)
+			return midIndex;
 		//If the value is lower than mid
 		else if (arr[midIndex] > value)
 			return CheckValidMoves(value, 0, midIndex - 1);
@@ -37,22 +39,23 @@ int Player::CheckValidMoves(std::string value, int firstIndex, int lastIndex) {
 	@param *board An instance of a board object
 */
 void Player::PerformSteal(int index, Player *opponent, BoardGame *board) {
-	int newIndex;
-	int subIndex = CheckValidMoves(board->GetUserChoice(index));
-	
-	//Exit if conditions are not met
-	if (subIndex == -1 || board->GetBoardGameArray(index) != 1)
-		return;
-	
-	//Continue
-	std::string location;
-	location = opponent->GetValidUserInput(index);
-	
 
-	newIndex = board->BinarySearchForIndex(location);
-	board->SetValue(*playerMancalaLocation, board->GetBoardGameArray(*playerMancalaLocation)+board->GetBoardGameArray(newIndex)+1);
-	board->SetValueToZero(newIndex); 
-	board->SetValueToZero(index); //working
+	int subIndexInValidUserInput = CheckValidMoves(board->GetUserChoice(index));
+
+	//Exit if conditions are not met
+	if (subIndexInValidUserInput == -1 || board->GetBoardGameArray(index) != 1)
+		return;
+
+	std::string stringAtOpponentIndex = opponent->GetValidUserInput(subIndexInValidUserInput);
+
+	int indexToStealFrom = board->BinarySearchForIndex(stringAtOpponentIndex);
+
+	//Set the score at the player's mancala position to the apporiate points
+	board->SetValue(*playerMancalaLocation, board->GetBoardGameArray(*playerMancalaLocation) 
+		+ board->GetBoardGameArray(indexToStealFrom) + 1);
+	//Set 2 indexes to 0
+	board->SetValueToZero(indexToStealFrom);
+	board->SetValueToZero(index);
 }
 
 
@@ -97,8 +100,9 @@ void Player::PlayerMoves(int index, Player *opponent, BoardGame *board) {
 				opponent->SetPlayerTurn(false);
 			}
 		}
-
+		//Print out board
 		system("cls");
+		PrintTitle(0);
 		board->RenderBoard(8, 2, "");
 		Sleep(500);
 	}
