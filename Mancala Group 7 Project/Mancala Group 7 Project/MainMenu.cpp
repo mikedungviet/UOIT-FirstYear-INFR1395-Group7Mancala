@@ -60,13 +60,13 @@ void PlayerMoves(Player *player, Player *opponent, BoardGame *board, std::string
 	system("CLS");
 	PrintTitle(0);
 	board->RenderBoard(8, 2, (player->GetName() + "'s Turn"));
-	std::cout << "\nValid Choice "+ message +": ";
+	std::cout << "\nPlease pick a pit "+ message +": ";
 	while (std::cin >> userChoice) {
 		userChoice[0] = tolower(userChoice[0]);
 		if (player->CheckValidMoves(userChoice)!=-1)
 			break;
 		std::cout << "Invalid Choice. Please try again: ";
-		std::cout << "\nValid Choice " + message + ": ";
+		std::cout << "\nPlease pick a pit " + message + ": ";
 	}
 	int userInputToIndex = board->BinarySearchForIndex(userChoice);
 	player->PlayerMoves(userInputToIndex, opponent, board);
@@ -89,11 +89,11 @@ std::string LocalMutiPlayer(Player *player1, Player *player2, BoardGame *board) 
 	while (true) {
 		//Player1's turn
 		if (player1->GetPlayerTurn()) {
-			PlayerMoves(player1, player2, board, "(a1,a2,a3,a4,a5,a6)");
+			PlayerMoves(player1, player2, board, "(A1, A2, A3, A4, A5, A6)");
 		}
 		//Player2's turn
 		if (player2->GetPlayerTurn()) {
-			PlayerMoves(player2, player1, board, "(b1,b2,b3,b4,b5,b6)");
+			PlayerMoves(player2, player1, board, "(B1, B2, B3, B4, B5, B6)");
 		}
 		//Check if the game meets the condition to end
 		if (board->CheckIfGameEnds()) {
