@@ -36,6 +36,7 @@ int ConvertStringToInteger(std::string string) {
 int FirstMenu() {
 	std::string userInput;
 	while (true) {
+		PrintTitle(0);
 		std::cout << "1. Play a Local Multiplayer Game" << std::endl;
 		std::cout << "2. Instruction" << std::endl;
 		std::cout << "3. Exit Game" << std::endl;
