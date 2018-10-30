@@ -42,6 +42,7 @@ int FirstMenu() {
 		std::cout << "3. Exit Game" << std::endl;
 
 		while (std::cin >> userInput) {
+			std::cin.ignore();
 			int num = ConvertStringToInteger(userInput);
 			if (num >= 1 || num <= 3)
 				return num;

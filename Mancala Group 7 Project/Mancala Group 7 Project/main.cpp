@@ -81,7 +81,7 @@ std::string *GetandSetName(std::string playerNum) {
 	std::string *name = new std::string;
 	PrintTitle(0);
 	std::cout << "Enter " << playerNum << "'s name: ";
-	std::cin >> *name;
+	getline(std::cin, *name);
 	system("cls");
 	return name;
 }
