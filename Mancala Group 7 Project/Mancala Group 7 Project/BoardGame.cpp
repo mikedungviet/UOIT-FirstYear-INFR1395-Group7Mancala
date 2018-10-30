@@ -140,5 +140,4 @@ int BoardGame::BinarySearchForIndex(std::string value) {
 		}
 		return -1; //If the string doesn't in the array
 	}
-	
 }

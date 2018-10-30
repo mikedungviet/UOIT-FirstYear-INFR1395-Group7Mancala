@@ -77,7 +77,9 @@ public:
 	//Member function
 	int CheckValidMoves(std::string, int = 0, int = 5);
 	void PlayerMoves(int, Player *, BoardGame *);
+
 protected:
+	//Protected function
 	void PerformSteal(int index, Player *opponent, BoardGame *board);
 };
 

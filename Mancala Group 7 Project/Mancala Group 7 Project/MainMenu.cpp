@@ -36,7 +36,7 @@ int ConvertStringToInteger(std::string string) {
 int FirstMenu() {
 	std::string userInput;
 	while (true) {
-		PrintTitle(0);
+		PrintTitle(375);
 		std::cout << "1. Play a Local Multiplayer Game" << std::endl;
 		std::cout << "2. Instruction" << std::endl;
 		std::cout << "3. Exit Game" << std::endl;
@@ -84,8 +84,6 @@ void PlayerMoves(Player *player, Player *opponent, BoardGame *board, std::string
 std::string LocalMutiPlayer(Player *player1, Player *player2, BoardGame *board) {
 	//Local Variable (Stack memory)
 	std::string userInput, specialMessage;
-
-	//system("CLS");
 
 	//Game loop
 	while (true) {

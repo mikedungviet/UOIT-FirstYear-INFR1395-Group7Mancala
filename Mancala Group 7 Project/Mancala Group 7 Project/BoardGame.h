@@ -44,13 +44,12 @@ public:
 		data[10].userPosibleChoices = "b3";
 		data[11].userPosibleChoices = "b2";
 		data[12].userPosibleChoices = "b1";
-
 	}
 	/*
 		Deconstructor
 	*/
 	~BoardGame() {
-		
+		delete data;
 	}
 	/*
 		This function resets the boardGameValue to original
@@ -104,18 +103,13 @@ public:
 	}
 	
 	/*
+		This function sets the boardGameValue at an index
+		to another value
+		@param index The index in the data array
+		@param value The value to set it to.
 	*/
 	void SetValue(int index, int value) {
 		data[index].boardGameValue = value;
-	}
-
-	/*
-		Print the array (For Testing purpose)
-	*/
-	void PrintArray() {
-		for (int i = 0; i < 14; i++) {
-			std::cout << "I: " << i << " value: " << data[i].boardGameValue << std::endl;
-		}
 	}
 
 	//Class member function
