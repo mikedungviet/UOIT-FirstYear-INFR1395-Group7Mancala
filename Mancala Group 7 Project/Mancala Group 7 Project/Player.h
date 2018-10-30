@@ -9,25 +9,6 @@ private:
 	std::string *validUserInput = new std::string[6];
 	bool *playerTurn = new bool;
 public:
-	//Default constructor
-	Player() {}
-
-	//Player constructor
-	Player(int _playerNumber){
-		*playerTurn = false;
-		if (_playerNumber == 1) {
-			std::string tempArr[6] = { "a1","a2","a3","a4","a5","a6" };
-			std::copy(tempArr, tempArr + 6, validUserInput);
-			*playerMancalaLocation = 6;
-			*playerTurn = true;
-		}
-		else if (_playerNumber == 2) {
-			std::string tempArr[6] = { "b1","b2","b3","b4","b5","b6" };
-			std::copy(tempArr, tempArr + 6, validUserInput);
-			*playerMancalaLocation = 13;
-		}
-	}
-
 	//Player constructor
 	Player(int _playerNumber, std::string *_name) : name{ _name } {
 		*playerTurn = false;
@@ -42,6 +23,12 @@ public:
 			std::copy(tempArr, tempArr + 6, validUserInput);
 			*playerMancalaLocation = 13;
 		}
+	}
+	~Player() {
+		delete name;
+		delete playerMancalaLocation;
+		delete validUserInput;
+		delete playerTurn;
 	}
 
 	/*
