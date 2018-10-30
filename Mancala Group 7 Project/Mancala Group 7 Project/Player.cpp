@@ -15,20 +15,15 @@ void PrintTitle(int);
 			Return false if not found
 */
 int Player::CheckValidMoves(std::string value, int firstIndex, int lastIndex) {
-	//
 	std::string *arr = this->validUserInput;
-	if (firstIndex <= lastIndex) {
+	while (firstIndex <= lastIndex) {
 		int midIndex = (firstIndex + lastIndex) / 2;
-
-		//If the value is equal to mid
 		if (arr[midIndex] == value)
 			return midIndex;
-		//If the value is lower than mid
-		else if (arr[midIndex] > value)
-			return CheckValidMoves(value, 0, midIndex - 1);
-		//If the value is higher than mid
 		else if (arr[midIndex] < value)
-			return CheckValidMoves(value, midIndex + 1);
+			firstIndex = midIndex + 1;
+		else if (arr[midIndex] > value)
+			lastIndex = midIndex - 1;
 	}
 	return -1;
 }
