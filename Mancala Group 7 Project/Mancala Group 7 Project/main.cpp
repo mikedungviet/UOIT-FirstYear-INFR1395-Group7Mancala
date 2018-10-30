@@ -1,3 +1,12 @@
+/*
+	Group 7
+	Members:
+		Mike Pham (100706123)
+		Katy Blackstone (100717941)
+		Mikel Devlin (100725745)
+		Jonah Griffin (100702748)
+		Robert Knight (100670811)
+*/
 #include <iostream>
 #include <string>
 #include <stdlib.h>

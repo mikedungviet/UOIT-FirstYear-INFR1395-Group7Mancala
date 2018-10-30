@@ -1,10 +1,3 @@
-/*
-	Main Menu output to help the user see their options
-	@author Mike Pham
-	@contributor 
-	@version 1.0
-*/
-
 #pragma once
 //Header Files
 #include <string>
@@ -35,8 +28,8 @@ int ConvertStringToInteger(std::string string) {
 */
 int FirstMenu() {
 	std::string userInput;
+	PrintTitle(375);
 	while (true) {
-		PrintTitle(375);
 		std::cout << "1. Play a Local Multiplayer Game" << std::endl;
 		std::cout << "2. Instruction" << std::endl;
 		std::cout << "3. Exit Game" << std::endl;
