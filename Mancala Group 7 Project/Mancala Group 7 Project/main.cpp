@@ -22,10 +22,10 @@ int main()
 
 	//Set window screen and title animation
 	SetWindow();
-	PrintTitle(375);
 	while (true) {
 		//Menu loop
 		system("cls");
+		PrintTitle(375);
 		choice = FirstMenu();
 		//if user input = 1 Start a game
 		if (choice == 1) {
