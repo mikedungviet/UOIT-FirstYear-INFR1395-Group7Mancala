@@ -23,6 +23,7 @@ void BoardGame::RenderBoard(int xLocation, int yLocation, std::string specialMes
 	}
 
 	//Cout after indexing to X axis
+	std::cout << std::setw(92 + xLocation) << "<------------------------------- Player 2's side ---------------------------" << std::endl;
 	std::cout << std::setw(107 + xLocation) << " _______________________________________________________________________________________________________ \n";
 	std::cout << std::setw(107 + xLocation) << "|            |            |            |            |            |            |            |            |\n";
 	std::cout << std::setw(107 + xLocation) << "|            |    (B1)    |    (B2)    |    (B3)    |    (B4)    |    (B5)    |    (B6)    |            |\n";
@@ -39,15 +40,13 @@ void BoardGame::RenderBoard(int xLocation, int yLocation, std::string specialMes
 	std::cout << std::setfill(' ') << std::setw(107 + xLocation) << "|            |____________|____________|____________|____________|____________|____________|            |\n";
 	std::cout << std::setfill(' ') << std::setw(107 + xLocation) << "|            |                                                                             |            |\n";
 
-
+	//Print out manacala scores line
 	std::cout << std::setfill(' ') << std::setw(7 + xLocation) << "|     " << std::setw(2) << std::setfill('0') << data[13].boardGameValue << "     |" << std::setw((width / 2) + stringLength / 2) << std::setfill(' ') << specialMessage << std::setw(remainder)
 		<< "|     " << std::setw(2) << std::setfill('0') << data[6].boardGameValue << "     |\n";
-
-
+	
+	//Continue board printing
 	std::cout << std::setfill(' ') << std::setw(107 + xLocation) << "|            |_____________________________________________________________________________|            |\n";
 	std::cout << std::setfill(' ') << std::setw(107 + xLocation) << "|            |            |            |            |            |            |            |            |\n";
-
-
 
 	//Print the bottom row of data
 	std::cout << std::setw(14 + xLocation) << "|            ";
@@ -56,11 +55,11 @@ void BoardGame::RenderBoard(int xLocation, int yLocation, std::string specialMes
 	}
 	std::cout << "|            |" << std::endl;
 
-
-
+	//Continue board printing
 	std::cout << std::setfill(' ') << std::setw(107 + xLocation) << "|            |            |            |            |            |            |            |            |\n";
 	std::cout << std::setfill(' ') << std::setw(107 + xLocation) << "|            |    (A1)    |    (A2)    |    (A3)    |    (A4)    |    (A5)    |    (A6)    |            |\n";
-	std::cout << std::setw(107 + xLocation) << "|____________|____________|____________|____________|____________|____________|____________|____________|\n";
+	std::cout << std::setw(108 + xLocation) << "|____________|____________|____________|____________|____________|____________|____________|____________|\n\n";
+	std::cout << std::setw(91 + xLocation) << "------------------------------- Player 1's side --------------------------->" << std::endl;
 }
 
 /*
@@ -119,7 +118,6 @@ int BoardGame::BinarySearchForIndex(std::string value) {
 	if (arr[firstIndex].userPosibleChoices < arr[lastIndex].userPosibleChoices) {
 		while (firstIndex <= lastIndex) {
 			midIndex = (firstIndex + lastIndex) / 2;
-
 			if (arr[midIndex].userPosibleChoices == value)
 				return midIndex;
 			else if (arr[midIndex].userPosibleChoices < value)

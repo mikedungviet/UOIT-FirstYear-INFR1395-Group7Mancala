@@ -31,8 +31,6 @@ public:
 			}
 			data[i].boardGameValue = 4;
 		}
-
-		//data[12].boardGameValue = 11;
 		
 		data[0].userPosibleChoices = "a1";
 		data[1].userPosibleChoices = "a2";

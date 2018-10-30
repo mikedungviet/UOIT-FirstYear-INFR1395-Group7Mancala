@@ -9,11 +9,8 @@ private:
 	std::string *validUserInput = new std::string[6];
 	bool *playerTurn = new bool;
 public:
-	//Default constructor
-	Player() {}
-
 	//Player constructor
-	Player(int _playerNumber){
+	Player(int _playerNumber, std::string *_name) : name{ _name } {
 		*playerTurn = false;
 		if (_playerNumber == 1) {
 			std::string tempArr[6] = { "a1","a2","a3","a4","a5","a6" };
@@ -27,6 +24,12 @@ public:
 			*playerMancalaLocation = 13;
 		}
 	}
+	~Player() {
+		delete name;
+		delete playerMancalaLocation;
+		delete validUserInput;
+		delete playerTurn;
+	}
 
 	/*
 		This function gets the name of the player
@@ -36,15 +39,11 @@ public:
 		return *name;
 	}
 
-	/*
-		This function returns the string array
-		@return
-	*/
-	std::string *GetValidUserInput() {
-		return validUserInput;
-	}
 
 	/*
+		This function gets the string at the index location
+		of the validUserInput array
+		@return Return the string
 	*/
 	std::string GetValidUserInput(int location) {
 		return validUserInput[location];
@@ -59,7 +58,7 @@ public:
 	}
 
 	/*
-		This function returns the index of the player
+		This function returns the index of the player's
 		mancala
 	*/
 	int GetPlayerMancalaIndex() {
@@ -73,17 +72,12 @@ public:
 		*playerTurn = turn;
 	}
 
-	/*
-		This function set the player's name
-	*/
-	void SetPlayerName(std::string _name) {
-		*name = _name;
-	}
 	
 
 	//Member function
 	int CheckValidMoves(std::string, int = 0, int = 5);
 	void PlayerMoves(int, Player *, BoardGame *);
+protected:
 	void PerformSteal(int index, Player *opponent, BoardGame *board);
 };
 
